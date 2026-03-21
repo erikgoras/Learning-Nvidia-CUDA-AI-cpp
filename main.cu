@@ -10,11 +10,14 @@ __global__ void particleUpdateKernel(float* data, int n) {
 }
 
 
+
 class Moat {
 public:
-    static float protect(float value) {
-        float limit = 50.0f; // Vår "mur"
-        return (value > limit) ? limit : value;
+    // Kollar om värdet är säkert inom min/max
+    static float clamp(float value, float min, float max) {
+        if (value < min) return min;
+        if (value > max) return max;
+        return value;
     }
 };
 
@@ -56,9 +59,8 @@ public:
 
 
         
-        std::cout << "Simulering klar!" << std::endl;
+		std::cout << "Moat-kontroll (0-75): " << Moat::clamp(firstParticleResult, 0.0f, 75.0f) << std::endl;
 
-		std::cout << "Skyddat värde (Moat): " << Moat::protect(firstParticleResult) << std::endl;
 
         
     }
