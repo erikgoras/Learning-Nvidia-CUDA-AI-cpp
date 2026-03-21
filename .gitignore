@@ -1,0 +1,10 @@
+# Ignorera det kompilerade programmet
+main
+
+# Ignorera objektfiler
+*.o
+
+# Ignorera dolda systemfiler (viktigt för Mac/Linux-mix)
+.DS_Store
+
+
